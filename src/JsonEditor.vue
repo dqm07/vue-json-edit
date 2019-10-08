@@ -17,14 +17,18 @@ export default {
       default: function () {
         return { 
           confirmText: "confirm",
-          cancelText: "cancel"
+          cancelText: "cancel",
+          editDefaultJsonValue: false,
+          themeColor: ''
         }
       },
     }
   },
   provide () {
     return {
-      formBtnText: this.options
+      formBtnText: this.options,
+      isEditDefaultJsonValue: this.options.editDefaultJsonValue,
+      themeColor: this.options.themeColor
     }
   },
   data () {

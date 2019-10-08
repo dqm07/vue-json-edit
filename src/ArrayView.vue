@@ -13,6 +13,7 @@
             class="val-input"
             v-if="member.type == 'string'"
             placeholder="string"
+            :style="{ color: themeColor }"
           >
           <input
             type="number"
@@ -20,6 +21,7 @@
             class="val-input"
             v-if="member.type == 'number'"
             placeholder="number"
+            :style="{ color: themeColor }"
           >
           <select
             name="value"
@@ -68,6 +70,7 @@
 
         <i 
           class="del-btn" 
+          v-if="!isEditDefaultJsonValue"
           @click="delItem(parsedData, member, index)">
           <i class="v-json-edit-icon-trash"></i>
         </i>
@@ -83,7 +86,7 @@
 
     <div
       class="block add-key" 
-      v-if="!toAddItem" 
+      v-if="!toAddItem && !isEditDefaultJsonValue" 
       @click="addItem">
       <i class="v-json-edit-icon-plus"></i>
     </div>
@@ -96,6 +99,7 @@ import ItemAddForm from "./ItemAddForm.vue";
 export default {
   name: "ArrayView",
   props: ["parsedData"],
+  inject: ["isEditDefaultJsonValue", "themeColor"],
   data: function() {
     return {
       flowData: this.parsedData,

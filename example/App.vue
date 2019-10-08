@@ -8,6 +8,8 @@
 						:options="{
 							confirmText: 'confirm',
 							cancelText: 'cancel',
+							editDefaultJsonValue: true,
+							themeColor: '#1657B6'
 						}"
 						:objData="jsonData" 
 						v-model="jsonData" ></JsonEditor>

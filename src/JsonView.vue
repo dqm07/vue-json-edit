@@ -10,6 +10,7 @@
           type="text"
           v-model="item.name"
           class="key-input"
+          :disabled="isEditDefaultJsonValue"
           v-if="typeof item.name == 'string'"
           @blur="keyInputBlur(item, $event)"
         >
@@ -22,6 +23,7 @@
         </i>
         <i
           class="del-btn" 
+          v-if="!isEditDefaultJsonValue"
           @click="delItem(parsedData, item, index)">
           <i class="v-json-edit-icon-trash"></i>
         </i>
@@ -51,11 +53,13 @@
               type="text" 
               v-model="item.remark" 
               class="val-input" 
+              :style="{ color: themeColor }"
               v-if="item.type == 'string'">
             <input
               type="number"
               v-model.number="item.remark"
               class="val-input"
+              :style="{ color: themeColor }"
               v-if="item.type == 'number'"
             >
             <select
@@ -80,7 +84,7 @@
     <div 
       class="block add-key" 
       @click="addItem" 
-      v-if="!toAddItem">
+      v-if="!toAddItem && !isEditDefaultJsonValue">
       <i class="v-json-edit-icon-plus"></i>
     </div>
   </div>
@@ -102,6 +106,7 @@ export default {
   created () {
     this.flowData = this.parsedData;
   },
+  inject: ['isEditDefaultJsonValue', 'themeColor'],
   watch: {
     parsedData: {
       handler(newValue, oldValue) {
