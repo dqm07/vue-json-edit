@@ -119,7 +119,7 @@ export default {
   },
   methods: {
     delItem: function(parentDom, item, index) {
-      this.flowData = this.flowData.rmIndex(index);
+      this.flowData = this.flowData.splice(index, 1);
       if (this.hideMyItem[index]) this.hideMyItem[index] = false;
       this.$emit("input", this.flowData);
     },

@@ -1,13 +1,13 @@
 {
   "name": "@didi/vue-json-edit",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "visual JSON editor built as an vue component",
   "author": "Jinkin1995 <jinkin1995@gmail.com>",
   "keywords": [
     "vue",
     "json"
   ],
-  "main": "./dist/vue-json-edit.js",
+  "main": "./src/index.js",
   "module": "./dist/vue-json-edit.js",
   "repository": {
     "type": "git",
